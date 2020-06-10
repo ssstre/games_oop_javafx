@@ -10,7 +10,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class MovingBall extends Application{
+public class MovingBall extends Application {
 
     @Override
     public void start(Stage stage) {
