@@ -1,4 +1,4 @@
-package ru.job4j.puzzle;
+package ru.job4j.packman;
 
 import javafx.animation.*;
 import javafx.application.Application;
