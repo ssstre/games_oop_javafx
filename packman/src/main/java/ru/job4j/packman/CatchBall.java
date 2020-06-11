@@ -1,7 +1,5 @@
 package ru.job4j.packman;
 
-import javafx.animation.SequentialTransition;
-import javafx.animation.TranslateTransition;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
@@ -9,8 +7,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import javafx.util.Duration;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -25,14 +21,8 @@ public class CatchBall extends Application {
         ball.setLayoutX(10);
         ball.setLayoutY(10);
         canvas.getChildren().add(ball);
-        List<Circle> apples = new ArrayList<Circle>();
-        Random rn = new Random();
-        for (int i = 0; i < 10; i++) {
-            Circle apple = new Circle(10, Color.GREEN);
-            apple.relocate(rn.nextInt(500), rn.nextInt(500));
-            canvas.getChildren().add(apple);
-            apples.add(apple);
-        }
+        List<Circle> apples = generateApples();
+        canvas.getChildren().addAll(apples);
         scene.addEventFilter(KeyEvent.KEY_PRESSED,
                 event -> {
                     int deltaX = 0;
@@ -50,6 +40,17 @@ public class CatchBall extends Application {
         );
         stage.setScene(scene);
         stage.show();
+    }
+
+    private List<Circle> generateApples() {
+        List<Circle> apples = new ArrayList<>();
+        Random rn = new Random();
+        for (int i = 0; i < 10; i++) {
+            Circle apple = new Circle(10, Color.GREEN);
+            apple.relocate(rn.nextInt(500), rn.nextInt(500));
+            apples.add(apple);
+        }
+        return apples;
     }
 
     private void catchEnemy(Circle hero,  List<Circle> apples, Pane canvas) {
